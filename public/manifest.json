@@ -1,0 +1,6 @@
+{
+  "short_name": "Image Slider App",
+  "name": "Image Slider App",
+  "start_url": "./index.html",
+  "display": "standalone",
+}

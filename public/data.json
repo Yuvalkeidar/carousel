@@ -1,0 +1,28 @@
+{
+    "images": [
+        {
+            "url": "/images/field.jpg",
+            "title": "field"
+        },
+        {
+            "url": "/images/light.jpg",
+            "title": "light"
+        },
+        {
+            "url": "/images/snow.jpg",
+            "title": "snow"
+        },
+        {
+            "url": "/images/sparkler.jpg",
+            "title": "sparkler"
+        },
+        {
+            "url": "/images/winter.jpg",
+            "title": "winter"
+        },
+        {
+            "url": "/images/fly-agaric.jpg",
+            "title": "fly"
+        }
+    ]
+}
