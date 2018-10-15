@@ -7,7 +7,6 @@ export const FETCH_DATA = 'FETCH_DATA';
 // Fetch Data
 export function fetchData(){
     const url = `./data.json`;
-    const request = axios.get(url);
     return axios({
           url:url,
           method:'get'

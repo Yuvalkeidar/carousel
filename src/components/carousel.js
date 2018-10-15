@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 
 //Important note - the first and last element will never show
 //I used them to make the title row infinte for images they could be used
@@ -37,23 +36,25 @@ export class Carousel extends React.Component {
     //infinte slider when mouse over will not continue slide
     infinteSlider(){
         if (this.state.userActive === true)
-            clearInterval(this.state.intervalId);
+            clearInterval(this.intervalId);
         else
             this.arrowLeftClick.call(this);
     }
     //keep moving when user doesn't over on carousel
     mouseOut() {
-      this.state['userActive'] = false;
-      this.state['intervalId'] = setInterval(this.infinteSlider.bind(this), 5000);
-      this.setState(this.state);
+      this.setState({
+          userActive: false,
+      });
+      this.intervalId = setInterval(this.infinteSlider.bind(this), 5000);
     }
     //stop when user over on carousel to prevent from sliding when
     //user using carousel
     mouseOver() {
-      clearInterval(this.state.intervalId);
-      this.state['userActive'] = true;
-      this.state['intervalId'] = '';
-      this.setState(this.state);
+      clearInterval(this.intervalId);
+      this.setState({
+          userActive: true,
+      });
+      this.intervalId = '';
     }
     arrowRightClick(){
         let activeIndex = this.state.activeIndex;
@@ -67,7 +68,7 @@ export class Carousel extends React.Component {
         //transport to the end of the list for this situation and
         //change left for title and image to this pos by this calculation
         //else keep reducing active index
-        if (activeIndex == 1){
+        if (activeIndex === 1){
             activeIndex = this.props.length - 2;
             titleLeft -= (33.33333 * (this.props.length - 2));
             imageLeft -= (100 * (this.props.length - 2));
@@ -106,7 +107,7 @@ export class Carousel extends React.Component {
         //as well length -1 change left for title and image to this pos
         //by this calculation else keep reducing active index
 
-        if (activeIndex == this.props.length - 2){
+        if (activeIndex === this.props.length - 2){
             activeIndex = 1;
             titleLeft += (33.33333 * (this.props.length - 2));
             imageLeft += (100 * (this.props.length - 2));
@@ -134,9 +135,9 @@ export class Carousel extends React.Component {
     }
     classSelector(data){
         //decide prev active and next classes
-        return data.className + " " + (( data.index==this.state.activeIndex+1 || (this.state.activeIndex+1 > this.props.length - 1 && data.index == 0 ))
-                                    ? 'next' : (data.index==this.state.activeIndex-1 || (this.state.activeIndex-1 < 0 && data.index == this.props.length - 1  ))
-                                        ? 'prev' : (data.index==this.state.activeIndex)
+        return data.className + " " + (( data.index===this.state.activeIndex+1 || (this.state.activeIndex+1 > this.props.length - 1 && data.index === 0 ))
+                                    ? 'next' : (data.index===this.state.activeIndex-1 || (this.state.activeIndex-1 < 0 && data.index === this.props.length - 1  ))
+                                        ? 'prev' : (data.index===this.state.activeIndex)
                                             ?'active':'');
     }
     //select image Element from his title
